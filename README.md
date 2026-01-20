@@ -1,27 +1,60 @@
-# Portfolio
+# Portfolio Website 🚀
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.4.
+This repository contains my **personal portfolio website**, built with **Angular**.
+The site is used to present my skills, projects, and contact information in a clean and interactive way.
 
-## Development server
+🌍 Live site: https://georg-strassberger.de
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+---
 
-## Code scaffolding
+## ✨ Purpose
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+The portfolio serves as:
+- a central overview of my frontend development skills
+- a showcase for selected projects
+- a simple way to get in touch with me
 
-## Build
+It focuses on **clarity, and modern frontend practices**.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+---
 
-## Running unit tests
+## 🛠️ Tech Stack
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- **Angular**
+- **TypeScript**
+- **HTML & SCSS**
 
-## Running end-to-end tests
+---
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## 🌐 Features
 
-## Further help
+- 📱 Responsive single-page application
+- 🌍 Language switch (EN / DE)
+- 🧩 Modular component-based architecture
+- 🎨 Modern UI with animations and clean layout
+- 📂 Integrated project showcase with GitHub links
+- 📬 Contact section with social links
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+---
+
+## 📁 Projects Included
+
+Some of the showcased projects:
+- Docusaurus documentation platform
+- Slack Clone (Angular & Firebase)
+- Ring of Fire (multiplayer party game)
+- El Pollo Loco (JavaScript OOP game)
+- Pokédex (REST API-based project)
+
+Each project includes a short description and a link to its source code.
+
+---
+
+## 🚀 Local Development
+
+```bash
+npm install
+ng serve
+```
+
+---

@@ -7,6 +7,14 @@ import { Project } from './project/project.model';
 export class PortfolioService {
   private projects: Project[] = [
     new Project(
+      'Docusaurus',
+      ['React', 'JavaScript', 'Markdown', 'HTML', 'CSS'],
+      'PROJECT_DOCUSAURUS_DESCRIPTION',
+      '/assets/images/projects/docusaurus.620w-460h',
+      'https://github.com/GeorgStrassberger/sysdocs',
+      'https://docs.devops-zone.com/'
+    ),
+    new Project(
       'SlackClone',
       ['Angular', 'Firebase', 'ngMaterial'],
       'PROJECT_SLACK_DESCRIPTION',
@@ -35,7 +43,7 @@ export class PortfolioService {
       ['Angular', 'Firebase', 'TypeScript'],
       'PROJECT_RING_DESCRIPTION',
       '/assets/images/projects/rof.620w-460h',
-      'https://github.com/GeorgStrassberger/RingOfFire',
+      'https://github.com/GeorgStrassberger/ng_ringOfFire',
       'http://ring-of-fire.georg-strassberger.de/'
     ),
     new Project(
@@ -51,12 +59,12 @@ export class PortfolioService {
       ['Rest-Api', 'JavaScript', 'HTML', 'CSS'],
       'PROJECT_POKEDEX_DESCRIPTION',
       '/assets/images/projects/pokedex.620w-460h',
-      'https://github.com/GeorgStrassberger/Pokedex',
+      'https://github.com/GeorgStrassberger/js_pokedex',
       'http://pokedex.georg-strassberger.de/'
     ),
   ];
 
-  constructor() {}
+  constructor() { }
 
   getProjects(): Project[] {
     return this.projects.slice();

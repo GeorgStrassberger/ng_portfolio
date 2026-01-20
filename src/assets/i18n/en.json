@@ -33,5 +33,6 @@
   "PROJECT_RING_DESCRIPTION": "Awesome drinking game for parties. That players can play on one or more devices at the same time.",
   "PROJECT_HOMEPAGE_DESCRIPTION": "My own homepage created with the Angular Framework",
   "PROJECT_POKEDEX_DESCRIPTION": "Based on the PokéAPI a library that provides and catalogues pokemon information.",
-  "PROJECT_SLACK_DESCRIPTION": "SlackClone is a web-based replica of an instant messaging service. The project involves working as a group to enable efficient collaboration."
+  "PROJECT_SLACK_DESCRIPTION": "SlackClone is a web-based replica of an instant messaging service. The project involves working as a group to enable efficient collaboration.",
+  "PROJECT_DOCUSAURUS_DESCRIPTION": "Multilingual personal documentation and portfolio platform based on Docusaurus/React for continuously maintained DevOps and software development notes."
 }
