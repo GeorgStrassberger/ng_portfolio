@@ -62,6 +62,14 @@ export class PortfolioService {
       'https://github.com/GeorgStrassberger/js_pokedex',
       'http://pokedex.georg-strassberger.de/'
     ),
+        new Project(
+      'TicTacToe',
+      ['Vite', 'JavaScript', 'HTML', 'CSS'],
+      'PROJECT_TICTACTOE_DESCRIPTION',
+      '/assets/images/projects/tictactoe.620w-460h',
+      'https://github.com/GeorgStrassberger/js_tic-tac-toe',
+      'https://tictactoe.georg-strassberger.de/'
+    ),
   ];
 
   constructor() { }
