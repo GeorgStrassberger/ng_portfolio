@@ -48,7 +48,7 @@ jobs:
         run: |
           echo "Testing SFTP connection..."
           echo "test" > test-connection.txt
-          sftp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -P ${{ secrets.STRATO_SFTP_PORT }} ${{ secrets.STRATO_SFTP_USER }}@${{ secrets.STRATO_SFTP_HOST }} <<< "put test-connection.txt ${{ inputs.target_path }}/test-connection.txt"
+          sftp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -P ${{ secrets.STRATO_SFTP_PORT }} ${{ secrets.STRATO_SFTP_USER }}@${{ secrets.STRATO_SFTP_HOST }} <<< "put test-connection.txt ${{ inputs.target_path }}test-connection.txt"
           echo "SFTP connection test successful!"
 
       - name: SFTP upload
@@ -83,7 +83,7 @@ jobs:
         run: |
           echo "Testing SFTP connection..."
           echo "test" > test-connection.txt
-          sftp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -P ${{ secrets.STRATO_SFTP_PORT }} ${{ secrets.STRATO_SFTP_USER }}@${{ secrets.STRATO_SFTP_HOST }} <<< "put test-connection.txt ${{ inputs.target_path }}/test-connection.txt"
+          sftp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -P ${{ secrets.STRATO_SFTP_PORT }} ${{ secrets.STRATO_SFTP_USER }}@${{ secrets.STRATO_SFTP_HOST }} <<< "put test-connection.txt ${{ inputs.target_path }}test-connection.txt"
           echo "SFTP connection test successful!"
 
       - name: SFTP upload
