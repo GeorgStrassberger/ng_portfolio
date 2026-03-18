@@ -23,6 +23,14 @@ export class PortfolioService {
       'https://slackclone.georg-strassberger.de'
     ),
     new Project(
+      'Join',
+      ['Angular', 'Express'],
+      'PROJECT_JOIN_DESCRIPTION',
+      '/assets/images/projects/join.620w-460h',
+      'https://github.com/GeorgStrassberger/ng_join',
+      'https://join.georg-strassberger.de'
+    ),
+    new Project(
       'Photography',
       ['SCSS', 'CSS', 'HTML'],
       'PROJECT_PHOTOGRAPHY_DESCRIPTION',
