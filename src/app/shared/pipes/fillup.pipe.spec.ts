@@ -1,8 +1,8 @@
-import { Fillup2Pipe } from './fillup.pipe';
+import { FillupPipe } from './fillup.pipe';
 
-describe('Fillup2Pipe', () => {
+describe('FillupPipe', () => {
   it('create an instance', () => {
-    const pipe = new Fillup2Pipe();
+    const pipe = new FillupPipe();
     expect(pipe).toBeTruthy();
   });
 });
