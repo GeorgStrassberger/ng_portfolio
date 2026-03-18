@@ -1,0 +1,86 @@
+name: Reusable SFTP Deploy
+
+on:
+  workflow_call:
+    inputs:
+      artifact_name:
+        required: true
+        type: string
+      target_path:
+        required: true
+        type: string
+      smoke_url:
+        required: true
+        type: string
+      smoke_grep:
+        required: true
+        type: string
+      environment_name:
+        required: false
+        type: string
+        default: ""
+    secrets:
+      STRATO_SFTP_HOST:
+        required: true
+      STRATO_SFTP_USER:
+        required: true
+      STRATO_SFTP_PASSWORD:
+        required: true
+      STRATO_SFTP_PORT:
+        required: true
+
+jobs:
+  deploy_without_environment:
+    if: ${{ inputs.environment_name == '' }}
+    runs-on: ubuntu-24.04
+
+    steps:
+      - name: Download dist artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: ${{ inputs.artifact_name }}
+          path: ./deploy-dist
+
+      - name: Show artifact content
+        run: ls -la ./deploy-dist
+
+      - name: SFTP upload
+        uses: Dylan700/sftp-upload-action@v1.2.3
+        with:
+          server: ${{ secrets.STRATO_SFTP_HOST }}
+          username: ${{ secrets.STRATO_SFTP_USER }}
+          password: ${{ secrets.STRATO_SFTP_PASSWORD }}
+          port: ${{ secrets.STRATO_SFTP_PORT }}
+          uploads: |
+            ./deploy-dist/ => ${{ inputs.target_path }}
+
+      - name: Smoke test
+        run: curl -fsS "${{ inputs.smoke_url }}" | grep "${{ inputs.smoke_grep }}"
+
+  deploy_with_environment:
+    if: ${{ inputs.environment_name != '' }}
+    runs-on: ubuntu-24.04
+    environment: ${{ inputs.environment_name }}
+
+    steps:
+      - name: Download dist artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: ${{ inputs.artifact_name }}
+          path: ./deploy-dist
+
+      - name: Show artifact content
+        run: ls -la ./deploy-dist
+
+      - name: SFTP upload
+        uses: Dylan700/sftp-upload-action@v1.2.3
+        with:
+          server: ${{ secrets.STRATO_SFTP_HOST }}
+          username: ${{ secrets.STRATO_SFTP_USER }}
+          password: ${{ secrets.STRATO_SFTP_PASSWORD }}
+          port: ${{ secrets.STRATO_SFTP_PORT }}
+          uploads: |
+            ./deploy-dist/ => ${{ inputs.target_path }}
+
+      - name: Smoke test
+        run: curl -fsS "${{ inputs.smoke_url }}" | grep "${{ inputs.smoke_grep }}"

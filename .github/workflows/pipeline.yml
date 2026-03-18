@@ -1,0 +1,68 @@
+name: Frontend Pipeline
+
+on:
+  pull_request:
+    branches:
+      - main
+    types:
+      - opened
+      - synchronize
+      - reopened
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+concurrency:
+  group: pipeline-${{ github.event_name }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  ci:
+    name: CI
+    uses: ./.github/workflows/_build-test.yml
+    with:
+      node_version: ${{ vars.NODE_VERSION }}
+      dist_path: ${{ vars.APP_DIST_PATH }}
+      artifact_name: frontend-dist
+      run_tests: true
+    secrets: inherit
+
+  deploy_review:
+    name: Deploy Review
+    if: github.event_name == 'pull_request'
+    needs: ci
+    uses: ./.github/workflows/_deploy-sftp.yml
+    with:
+      artifact_name: frontend-dist
+      target_path: ${{ vars.REVIEW_DEPLOY_PATH }}
+      smoke_url: ${{ vars.REVIEW_URL }}
+      smoke_grep: ${{ vars.SMOKE_GREP }}
+      environment_name: ""
+    secrets: inherit
+
+  deploy_staging:
+    name: Deploy Staging
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: ci
+    uses: ./.github/workflows/_deploy-sftp.yml
+    with:
+      artifact_name: frontend-dist
+      target_path: ${{ vars.STAGING_DEPLOY_PATH }}
+      smoke_url: ${{ vars.STAGING_URL }}
+      smoke_grep: ${{ vars.SMOKE_GREP }}
+      environment_name: "staging"
+    secrets: inherit
+
+  deploy_production:
+    name: Deploy Production
+    if: github.event_name == 'workflow_dispatch'
+    needs: ci
+    uses: ./.github/workflows/_deploy-sftp.yml
+    with:
+      artifact_name: frontend-dist
+      target_path: ${{ vars.PRODUCTION_DEPLOY_PATH }}
+      smoke_url: ${{ vars.PRODUCTION_URL }}
+      smoke_grep: ${{ vars.SMOKE_GREP }}
+      environment_name: "production"
+    secrets: inherit
