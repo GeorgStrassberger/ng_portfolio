@@ -1,0 +1,56 @@
+name: Reusable Build and Test
+
+on:
+  workflow_call:
+    inputs:
+      node_version:
+        required: true
+        type: string
+      dist_path:
+        required: true
+        type: string
+      artifact_name:
+        required: true
+        type: string
+      run_tests:
+        required: false
+        type: boolean
+        default: true
+
+jobs:
+  build_and_test:
+    runs-on: ubuntu-24.04
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ inputs.node_version }}
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Show build output
+        run: ls -la "${{ inputs.dist_path }}"
+
+      - name: Setup Chrome
+        if: ${{ inputs.run_tests }}
+        uses: browser-actions/setup-chrome@v1
+
+      - name: Run tests
+        if: ${{ inputs.run_tests }}
+        run: npm test -- --watch=false --browsers=ChromeHeadlessNoSandbox
+
+      - name: Upload dist artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ inputs.artifact_name }}
+          path: ${{ inputs.dist_path }}/
+          if-no-files-found: error
