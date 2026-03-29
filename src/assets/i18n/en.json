@@ -36,5 +36,6 @@
   "PROJECT_SLACK_DESCRIPTION": "SlackClone is a web-based replica of an instant messaging service. The project involves working as a group to enable efficient collaboration.",
   "PROJECT_DOCUSAURUS_DESCRIPTION": "Multilingual personal documentation and portfolio platform based on Docusaurus/React for continuously maintained DevOps and software development notes.",
   "PROJECT_TICTACTOE_DESCRIPTION": "A small Tic-Tac-Toe single-page app built with Vanilla JavaScript and Vite. The application stores player names in the browser, uses client-side routing, and is supported by tests and CI/CD.",
-  "PROJECT_JOIN_DESCRIPTION": "Join is a web-based Kanban board built with Angular and Express. It allows users to create tasks that can be organized in different columns."
+  "PROJECT_JOIN_DESCRIPTION": "Join is a web-based Kanban board built with Angular and Express. It allows users to create tasks that can be organized in different columns.",
+  "PROJECT_AI_DESCRIPTION": "A private learning platform for experimenting with AI and large language models (LLMs). The focus is on understanding, applying, and optimizing these technologies through testing with parameters, prompts, and various models. In the future, it will also be used for developing and training custom AI applications."
 }
